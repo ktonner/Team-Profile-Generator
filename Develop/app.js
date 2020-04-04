@@ -20,7 +20,7 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-inquirer.prompt([
+var start = [
     {
         type: "input",
         message: "What is your employee's name?",
@@ -46,9 +46,73 @@ inquirer.prompt([
         ],
         name: "list"
     }
-]).then(function(answers) {
-    console.log(answers)
+]
+
+function newManager(){
+    inquirer.prompt()[
+        {
+            type: "input",
+            message: "Enter their office number.",
+            name: "office"
+        }
+    ]
+}
+
+function init() {
+    inquirer.prompt(start).then(answers => {
+        try {
+            if(answers.list == "Manager"){
+                newManager()
+            }
+            else if(answers.list == "Engineer"){
+                newEngineer()
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    })
+};
+
+function newManager(){
+    console.log("Manager")
+    inquirer.prompt(
+        {
+            type: "input",
+            message: "Enter their office number.",
+            name: "office"
+        }
+    ).then(answersM => {
+    try{console.log(answersM)}
+    catch(err){
+        console.log(err)
+    }
 })
+}
+
+function newEngineer(){
+    console.log("Engineer")
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Enter their github URL.",
+            name: "github"
+        },
+        {
+            type: "input",
+            message: "Enter their github username.",
+            name: "githubUser"
+        }]
+    ).then(answersE => {
+    try{console.log(answersE)}
+    catch(err){
+        console.log(err)
+    }
+})
+}
+
+    init()
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
