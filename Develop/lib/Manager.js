@@ -13,6 +13,9 @@ class Manager extends Employee{
     this.getRole = function(){
         return "Manager"
     }
+    this.getID = function(){
+        return this.id
+    }
     }
 }
 
