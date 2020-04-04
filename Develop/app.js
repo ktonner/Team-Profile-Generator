@@ -104,11 +104,6 @@ function newEngineer() {
         },
         {
             type: "input",
-            message: "Enter their github URL.",
-            name: "github"
-        },
-        {
-            type: "input",
             message: "Enter their github username.",
             name: "githubUser"
         }]

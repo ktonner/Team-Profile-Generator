@@ -9,7 +9,7 @@ class Employee {
         this.getName = function(){
         return this.name;
     }
-    this.getID = function(){
+    this.getId = function(){
         return this.id;
     }
     this.getEmail = function(){
