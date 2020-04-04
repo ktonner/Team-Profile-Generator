@@ -6,12 +6,13 @@ class Engineer extends Employee{
     super(name, id, email)
     this.github = github;
     this.githubUser = githubUser
-    }
-    getGithub = function(){
+
+    this.getGithub = function(){
         return this.githubUser
         return this.github
     }
-    getRole = function(){
+    this.getRole = function(){
         return "Engineer"
+    }
     }
 }

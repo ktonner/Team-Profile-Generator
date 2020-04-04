@@ -5,19 +5,20 @@ class Employee {
         this.name = name;
         this.id = id;
         this.email = email;
-    }
-    getName(){
+    
+        this.getName = function(){
         return this.name;
     }
-    getID(){
+    this.getID = function(){
         return this.id;
     }
-    getEmail(){
+    this.getEmail = function(){
         return this.email
     }
-    getRole(){
+    this.getRole = function(){
         return "Employee"
     }
+}
 }
 
 module.exports = Employee
