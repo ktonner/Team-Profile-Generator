@@ -67,12 +67,17 @@ function init() {
             else if(answers.list == "Engineer"){
                 newEngineer()
             }
+            else if(answers.list == "Intern"){
+                newIntern()
+            }
         }
         catch (err) {
             console.log(err);
         }
     })
 };
+
+//question branch for manager
 
 function newManager(){
     console.log("Manager")
@@ -90,6 +95,8 @@ function newManager(){
 })
 }
 
+//branch for engineer 
+
 function newEngineer(){
     console.log("Engineer")
     inquirer.prompt([
@@ -105,6 +112,24 @@ function newEngineer(){
         }]
     ).then(answersE => {
     try{console.log(answersE)}
+    catch(err){
+        console.log(err)
+    }
+})
+}
+
+//branch for intern
+
+function newIntern(){
+    console.log("Intern")
+    inquirer.prompt(
+        {
+            type: "input",
+            message: "Enter their school name.",
+            name: "school"
+        }
+    ).then(answersI => {
+    try{console.log(answersI)}
     catch(err){
         console.log(err)
     }
