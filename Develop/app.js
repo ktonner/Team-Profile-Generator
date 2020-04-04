@@ -9,14 +9,9 @@ const OUTPUT_DIR = path.resolve(__dirname, "output")
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const renderArray = [];
 
-// const renderArray = [];
 
-// render(renderArray);
-
-// fs.writeFile(outputPath, html, err => {
-//     throw err
-// })
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -36,38 +31,25 @@ var start = [
         message: "What is your employee's email?",
         name: "email"
     },
-    {
-        type: "list",
-        message: "What is your employee's role?",
-        choices: [
-            "Manager",
-            "Engineer",
-            "Intern"
-        ],
-        name: "list"
-    }
 ]
 
-function newManager(){
-    inquirer.prompt()[
-        {
-            type: "input",
-            message: "Enter their office number.",
-            name: "office"
-        }
-    ]
-}
 
 function init() {
     inquirer.prompt(start).then(answers => {
         try {
-            if(answers.list == "Manager"){
-                newManager()
+            if (answers.list == "Manager") {
+                inquirer.prompt(
+                    {
+                        type: "input",
+                        message: "Enter their office number.",
+                        name: "office"
+                    }
+                )
             }
-            else if(answers.list == "Engineer"){
+            else if (answers.list == "Engineer") {
                 newEngineer()
             }
-            else if(answers.list == "Intern"){
+            else if (answers.list == "Intern") {
                 newIntern()
             }
         }
@@ -79,7 +61,7 @@ function init() {
 
 //question branch for manager
 
-function newManager(){
+function newManager() {
     console.log("Manager")
     inquirer.prompt(
         {
@@ -87,60 +69,72 @@ function newManager(){
             message: "Enter their office number.",
             name: "office"
         }
-    ).then(answersM => {
-    try{console.log(answersM)}
-    catch(err){
-        console.log(err)
-    }
-})
-}
-
-//branch for engineer 
-
-function newEngineer(){
-    console.log("Engineer")
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "Enter their github URL.",
-            name: "github"
-        },
-        {
-            type: "input",
-            message: "Enter their github username.",
-            name: "githubUser"
-        }]
-    ).then(answersE => {
-    try{console.log(answersE)}
-    catch(err){
-        console.log(err)
-    }
-})
-}
-
-//branch for intern
-
-function newIntern(){
-    console.log("Intern")
-    inquirer.prompt(
-        {
-            type: "input",
-            message: "Enter their school name.",
-            name: "school"
+    ).then(answers => {
+        try {
+            console.log(answers)
+            renderArray.push(answers)
+            console.log(renderArray)
         }
-    ).then(answersI => {
-    try{console.log(answersI)}
-    catch(err){
-        console.log(err)
-    }
-})
+        catch (err) {
+            console.log(err)
+        }
+    })
 }
+
+    //branch for engineer 
+
+    function newEngineer() {
+        console.log("Engineer")
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "Enter their github URL.",
+                name: "github"
+            },
+            {
+                type: "input",
+                message: "Enter their github username.",
+                name: "githubUser"
+            }]
+        ).then(answersE => {
+            try { console.log(answersE) }
+            catch (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    //branch for intern
+
+    function newIntern() {
+        console.log("Intern")
+        inquirer.prompt(
+            {
+                type: "input",
+                message: "Enter their school name.",
+                name: "school"
+            }
+        ).then(answersI => {
+            try { console.log(answersI) }
+            catch (err) {
+                console.log(err)
+            }
+        })
+    }
 
     init()
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
+
+
+// render(renderArray);
+
+// fs.writeFile(outputPath, html, err => {
+//     throw err
+// })
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
