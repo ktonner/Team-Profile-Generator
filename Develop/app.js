@@ -40,6 +40,29 @@ function init() {
         })
 }
 
+//reset function back to init
+function reset(){
+    inquirer.prompt(
+        {
+            type: "list",
+            message: "Would you like to add another employee?",
+            choices: [
+                "Yes",
+                "No"
+            ],
+            name: "reset"
+        }).then(answer => {
+            if(answer.reset == "Yes"){
+                init()
+            }
+            else{
+                fs.writeFile(outputPath, render(renderArray), err => {
+                    throw err
+                })
+            }
+        })
+    }
+
 
 //question branch for manager
 
@@ -72,9 +95,7 @@ function newManager() {
             console.log(answers)
             renderArray.push(new Manager(answers.name, answers.id, answers.email, answers.office))
             console.log(renderArray)
-            fs.writeFile(outputPath, render(renderArray), err => {
-                throw err
-            })
+            reset()
         }
         catch (err) {
             console.log(err)
@@ -110,8 +131,9 @@ function newEngineer() {
     ).then(answers => {
         try {
             console.log(answers)
-            renderArray.push(answers)
+            renderArray.push(new Engineer(answers.name, answers.id, answers.email, answers.githubUser))
             console.log(renderArray)
+            reset()
         }
         catch (err) {
             console.log(err)
@@ -147,14 +169,18 @@ function newIntern() {
     ]).then(answers => {
         try {
             console.log(answers)
-            renderArray.push(answers)
+            renderArray.push(new Intern(answers.name, answers.id, answers.email, answers.school))
             console.log(renderArray)
+            reset()
+
         }
         catch (err) {
             console.log(err)
         }
     })
 }
+
+
 
 init()
 
