@@ -1,5 +1,5 @@
 
-# Employee Management System
+# Team Profile Generator
 ## A quick terminal-based system that allows the user to add employees quickly to an HTML page.
 
 ## Table of Contents
