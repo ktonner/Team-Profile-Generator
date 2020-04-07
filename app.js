@@ -127,8 +127,8 @@ function newEngineer() {
             type: "input",
             message: "Enter their github username.",
             name: "githubUser"
-        }]
-    ).then(answers => {
+        }
+    ]).then(answers => {
         try {
             console.log(answers)
             renderArray.push(new Engineer(answers.name, answers.id, answers.email, answers.githubUser))
@@ -178,6 +178,8 @@ function newIntern() {
             console.log(err)
         }
     })
+    .catch(function(error) {
+        console.error(error);})
 }
 
 
