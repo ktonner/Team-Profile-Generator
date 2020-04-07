@@ -21,7 +21,7 @@ The inquirer will ask some questions about the employee you want to add. You can
 
 
 ## Test
-There are tests in the "Develop/lib" folder.
+There are tests in the "/lib" folder.
 
 ## Questions
 If you have any questions, contact ktonner on GitHub.
