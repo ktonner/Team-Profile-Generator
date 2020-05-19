@@ -23,6 +23,10 @@ The inquirer will ask some questions about the employee you want to add. You can
 ## Test
 There are tests in the "test" folder.
 
+## Link
+
+This is a terminal-based application.
+
 ## Questions
 If you have any questions, contact ktonner on GitHub.
 
